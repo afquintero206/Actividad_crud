@@ -4,15 +4,15 @@ require_once('Connect.php');
 if(!empty($_POST["actualizar"])) {
 	$conn = new Connect();
     $connect = $conn->init();
-	$pdo_statement=$connect->prepare("update persona set Documento='" . $_POST[ 'Documento' ] . "', Nombres='" . $_POST[ 'Nombres' ]. "', Apellidos='" . $_POST[ 'Apellidos' ]. "' , Correo='" . $_POST[ 'Correo' ]. "' where Id=" . $_GET["Id"]);
+	$pdo_statement=$connect->prepare("update persona set Documento='" . $_POST[ 'Documento' ] . "', Nombres='" . $_POST[ 'Nombres' ]. "', Apellidos='" . $_POST[ 'Apellidos' ]. "' , Correo='" . $_POST[ 'Correo' ]. "' where id=" . $_GET["id"]);
 	$result = $pdo_statement->execute();
 	if($result) {
-		header('location:index.php');
+		header('location:inicio.php');
 	}
 }
 $conn = new Connect();
 $connect = $conn->init();
-$pdo_statement = $connect->prepare("SELECT * FROM persona where Id=" . $_GET["id"]);
+$pdo_statement = $connect->prepare("SELECT * FROM persona where id=" . $_GET["id"]);
 $pdo_statement->execute();
 $result = $pdo_statement->fetchAll();
 ?>
@@ -61,7 +61,7 @@ $result = $pdo_statement->fetchAll();
                             <input type="text" name="Correo" class="form-control " placeholder="Ingrese su correo">
                             <span class="invalid-feedback"><?php echo $Nombre_err;?></span>
                         </div>
-                        <input type="hidden" name="Id" value="<?php echo $Id; ?>"/>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input name="actualizar" type="submit" class="btn btn-primary" value="Enviar">
                         <a href="inicio.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>

@@ -30,7 +30,7 @@
     $p='<table class="table table-bordered table-striped">
     <thead>
          <tr>
-            <th>Id</th>
+            <th>id</th>
             <th>Documento</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -41,7 +41,7 @@
     $s= "";
     foreach($visualizar as $key=>$value){
         $s = $s.'<tr>
-                     <td>'.$value['Id'].'</td>
+                     <td>'.$value['id'].'</td>
                      <td>'.$value['Documento'].'</td>
                      <td>'.$value['Nombres'].'</td>
                      <td>'.$value['Apellidos'].'</td>

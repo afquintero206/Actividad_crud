@@ -5,7 +5,9 @@ session_start();
 
 if (!$_SESSION) {
   header("Location:http://localhost/crud/login.php");
-  }
+   }
+
+   
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +44,13 @@ if (!$_SESSION) {
   </h7>
     <!-- BOTON DENTRO DE UN FORM PARA CERRAR SESION https://www.w3schools.com/php/php_sessions.asp-->
   
+
+    
   <div class="container">
   <div class="row">
     <div class="col text-center">
     <form action="logout.php" method="post">
-    <button type="submit" class= "btn btn-secondary btn-sm pull-right" >Longout</button>
+    <button type="submit" class= "btn btn-secondary btn-sm pull-right" >Logout</button>
     </form>        
     </div>
   </div>
@@ -65,7 +69,11 @@ if (!$_SESSION) {
                     </div>
 
 <?php
-			
+			  if(isset($_GET["borrar"])){
+          // se agrega la funcion setTimeout de javascript para que despues de 5 segudos se ejecute el funcion cerrar
+          echo "<div id='borrar' onclick='cerrar()' class='content alert alert-primary' > Registro eliminado  </div><script>setTimeout(cerrar, 2000)</script>";
+          }
+            
 			include_once('Connect.php');
 
             $conn = new Connect();
@@ -74,7 +82,7 @@ if (!$_SESSION) {
                 echo '<table class="table table-bordered table-striped">';
                 echo "<thead>";
                 echo "<tr>";
-                echo "<th>Id</th>";
+                echo "<th>id</th>";
                 echo "<th>Documento</th>";
                 echo "<th>Nombres</th>";
                 echo "<th>Apellidos</th>";
@@ -91,14 +99,15 @@ if (!$_SESSION) {
                while($row = $query->fetch(PDO::FETCH_OBJ)){
              
              echo "<tr>";
-             echo "<td>" . $row->Id . "</td>";
+             echo "<td>" . $row->id . "</td>";
              echo "<td>" . $row->Documento . "</td>";
              echo "<td>" . $row->Nombres . "</td>";
              echo "<td>" . $row->Apellidos . "</td>";
              echo "<td>" . $row->Correo . "</td>";
              echo "<td>";
-                echo '<a href="update.php?id='. $row->Id .'" class="mr-3" title="Actualizar perfil" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                echo '<a href="delete.php?id='. $row->Id .'" title="Borrar perfil" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                echo '<a href="update.php?id='. $row->id .'" class="mr-3" title="Actualizar perfil" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                echo '<a href="delete.php?id='. $row->id .'" title="Borrar perfil" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                
             echo "</td>";
             echo "</tr>";
                           

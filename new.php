@@ -37,7 +37,7 @@
                         <input name="Correo" type="text" class="form-control" id="Correo" placeholder="Correo">
                         </div>
                         <input name="insert" type="submit" class="btn btn-primary" value="Guardar">
-                        <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="inicio.php" class="btn btn-secondary ml-2">Cancelar</a>
                     
                 </div>
             </div>        

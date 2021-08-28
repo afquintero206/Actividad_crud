@@ -10,10 +10,10 @@ if (isset($_POST["borrar"])){
     $connect = $conn->init();
     
     // Prepare a delete statement
-    $sql = "DELETE FROM `persona` WHERE Id =:Id";
+    $sql = "DELETE FROM `persona` WHERE id =:id";
     $query = $connect->prepare($sql);
-    $query -> bindParam(':Id', $Id, PDO::PARAM_INT);
-    $Id=trim($_POST['Id']);
+    $query -> bindParam(':id', $id, PDO::PARAM_INT);
+    $id=trim($_POST['id']);
     $query -> execute();
      
     if($query->rowCount() > 0)
@@ -21,14 +21,15 @@ if (isset($_POST["borrar"])){
     $count = $query -> rowCount();
     echo "<div class='content alert alert-primary' > 
     Gracias: $count registro eliminado  </div>";
-    header("Location:http://localhost/crud/inicio.php");
+    header("Location:http://localhost/crud/inicio.php?borrar=borrar");
     }
     else{
         echo "<div class='content alert alert-danger'> No se pudo eliminar el registro  </div>";
     
     print_r($query->errorInfo()); 
     }
-   
+
+    
 } 
 
 ?>
@@ -55,7 +56,7 @@ if (isset($_POST["borrar"])){
                     <h3 class="mt-5 mb-3">Eliminar </h3>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
-                            <input type="hidden" name="Id" value="<?php echo trim($_GET["id"]); ?>"></input>
+                            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"></input>
                             <p>Desea eliminar el registro selecionado?</p>
                             <p>
                                 <input  name="borrar" type="submit" value="Si" class="btn btn-danger">
