@@ -32,7 +32,17 @@ if (!$_SESSION) {
             width: 120px;
         }
     </style>
-    <script>
+       <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+		//Funcion de javascript para cerrar el div de confirmacion de eliminacion
+		function cerrar(){
+			document.getElementById("borrar").style.display = "none";
+		}
+    </script>
+   
+   <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
         });
